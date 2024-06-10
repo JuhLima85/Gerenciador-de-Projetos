@@ -33,8 +33,6 @@ http://localhost:16543/login?next=%2F
 ##### Adicione um Novo Servidor no PgAdmin:
 ![pgAdmin](https://github.com/JuhLima85/Gerenciador-de-Projetos/assets/89745459/ea99b7be-f93b-4bf4-9543-1eaf82b59a68)
 
-
-
 ## Tecnologias Utilizadas
 - Java 17
 - Java Spring
@@ -82,6 +80,10 @@ POST /api/atividades
 
 ## Tratamento de Erro de Validação
 ![Erro](https://github.com/JuhLima85/Gerenciador-de-Projetos/assets/89745459/e8f15fa8-9221-4ad7-a7eb-42744c50af87)
+
+## Testes Unitários
+A API possui testes unitários utilizando JUnit e Mockito para garantir a qualidade e a confiabilidade do código. Esses testes cobrem as funcionalidades principais dos serviços, verificando o comportamento esperado das operações de CRUD e outros serviços oferecidos pela aplicação.
+![testes](https://github.com/JuhLima85/Gerenciador-de-Projetos/assets/89745459/629e68a1-2c0d-46e7-9dd0-327abf6274e6)
 
 ## Desenvolvedora:
 Juliana Lima de Souza
