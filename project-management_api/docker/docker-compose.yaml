@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  postgres-db:
+    container_name: postgres-db
+    image: postgres
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin"
+      POSTGRES_DB: "project_management_db"
+      TZ: "America/Sao_Paulo"
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - project_management-network
+    restart: always
+
+  api:
+    image: devjuliana/api-gerenciador-de-projetos:1.0.0
+    container_name: containerAPI
+    restart: always
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin"
+      POSTGRES_DB: "project_management_db"
+      POSTGRES_HOST: "postgres-db"
+      POSTGRES_PORT: "5432"
+    ports:
+      - 8080:8080
+    networks:
+      - project_management-network
+    depends_on:
+      - postgres-db
+    command: ["java", "-jar", "/app.jar"] # Comando para iniciar a aplicação e configuração para o Swagger
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+      TZ: "America/Sao_Paulo"
+    ports:
+      - "16543:80"
+    depends_on:
+      - postgres-db
+    networks:
+      - project_management-network
+    restart: always
+
+volumes:
+  pgdata:
+
+networks:
+  project_management-network:
+    driver: bridge
+
+
+#http://localhost:16543/login?next=%2F
