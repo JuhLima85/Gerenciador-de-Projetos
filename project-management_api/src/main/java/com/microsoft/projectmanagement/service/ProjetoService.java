@@ -66,7 +66,7 @@ public class ProjetoService {
         public ProjetoDTO save(ProjetoDTO projetoDTO) {
             validateProjetoFields(projetoDTO);
             if (!isValidStatus(projetoDTO.getStatus())) {
-                throw new InvalidStatusException("Status inválido: " + projetoDTO.getStatus() + ". Opções válidas: EM_ABERTO, CONCLUIDO, CANCELADO");
+                throw new InvalidStatusException("Status inválido: " + projetoDTO.getStatus() + ". Opções válidas: Em Aberto, Concluído, Cancelado");
             }
 
             Cliente cliente = clienteRepository.findById(projetoDTO.getClienteId())

@@ -5,11 +5,13 @@ import com.microsoft.projectmanagement.dto.ClienteDTO;
 import com.microsoft.projectmanagement.dto.ProjetoDTO;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.media.ArraySchema;
 import io.swagger.v3.oas.models.media.Schema;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -69,7 +71,9 @@ public class SwaggerConfig {
         // Construindo e retornando a configuração do OpenAPI
         return new OpenAPI()
                 .components(new Components().schemas(schemas))
-                .info(new Info().title("Project Management API").version("v0.0.1-SNAPSHOT"));
+                .info(new Info().title("Gerenciador de Projetos API").version("v0.0.1-SNAPSHOT")
+                        .contact(new Contact().name("Juliana Lima de Souza")));
+
     }
 }
 
